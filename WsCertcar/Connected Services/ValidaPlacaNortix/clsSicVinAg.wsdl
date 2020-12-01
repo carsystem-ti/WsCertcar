@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://webservices.nortix.com.br/webservices/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="https://webservices.nortix.com.br/webservices/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Provimento de servicos (via web services) sobre o Sistema Decodificador de Placas da Nortix Ltda.&lt;br&gt;O provimento deste servico nao eh publico, estando liberado apenas para nossos clientes mediante contrato.&lt;br&gt;Versao 1.19 de 22-Mai-2018</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://webservices.nortix.com.br/webservices/">
+      <s:element name="InputSicVinAgRst">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pstrCliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pstrLogin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pstrSenha" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pstrPlaca" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pstrChassi" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InputSicVinAgRstResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InputSicVinAgRstResult" type="tns:struct_RespostaRst" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="struct_RespostaRst">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Identificacao" type="tns:struct_Identificacao" />
+          <s:element minOccurs="1" maxOccurs="1" name="Controle" type="tns:struct_Controle" />
+          <s:element minOccurs="1" maxOccurs="1" name="Resposta" type="tns:struct_RespostaFormatada" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="struct_Identificacao">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="NomeDaTransacao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescricaoDaTransacao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VersaoDaTransacao" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataDaPublicacao" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Autor" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="struct_Controle">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Cliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlacaDeEntrada" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ChassiDeEntrada" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IPdoComputadorConsumidor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NomeDoComputadorProvedor" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodigoDeControle" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Severidade" type="tns:e_Severidade" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descricao" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AcaoAdotada" type="tns:e_Acao" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResultadoDaPesquisa" type="tns:e_ResultadoDaPesquisa" />
+          <s:element minOccurs="1" maxOccurs="1" name="GravacaoDoLog" type="tns:e_GravacaoDeLog" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataExecucao" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="NrTransacao" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Observacao" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="e_Severidade">
+        <s:restriction base="s:string">
+          <s:enumeration value="e0_NumeradorNaoInicializado" />
+          <s:enumeration value="e1_MensagemDeInformacaoSimples" />
+          <s:enumeration value="e2_MensagemDeAdvertencia" />
+          <s:enumeration value="e3_MensagemDeErro" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="e_Acao">
+        <s:restriction base="s:string">
+          <s:enumeration value="e0_NumeradorNaoInicializado" />
+          <s:enumeration value="e1_TrasacaoFoiExecutada" />
+          <s:enumeration value="e2_TransacaoNaoFoiExecutada" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="e_ResultadoDaPesquisa">
+        <s:restriction base="s:string">
+          <s:enumeration value="e0_NumeradorNaoInicializado" />
+          <s:enumeration value="e1_RegistrosForamLocalizados" />
+          <s:enumeration value="e2_RegistrosNaoForamLocalizados" />
+          <s:enumeration value="e3_RegistrosNemForamPesquisados" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="e_GravacaoDeLog">
+        <s:restriction base="s:string">
+          <s:enumeration value="e0_NumeradorNaoInicializado" />
+          <s:enumeration value="e1_TransacaoFoiLogada" />
+          <s:enumeration value="e2_TransacaoNaoFoiLogada" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="struct_RespostaFormatada">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Chassi" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fabricante" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AnoFabricacao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AnoModelo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Combustivel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QuantidadeDeEixos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoDaCarroceria" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegiaoGeografica" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pais" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocalDaFabrica" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Marca" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Modelo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Veiculo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Versao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Motor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoDoMotor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tracao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Transmissao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Portas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Classificacao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comprimento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MesDeProducao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PesoBruto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoDeFreio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DigitoVerificador" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VerificacaoDoSerial" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DistanciaEntreEixos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodigoFipe" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Conclusao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QuantidadeIrregularidades" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodigoIrregularidade" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Placa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AdvertenciaDenatran" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InputSicVinAgDst">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pstrCliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pstrLogin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pstrSenha" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pstrPlaca" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pstrChassi" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InputSicVinAgDstResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InputSicVinAgDstResult" type="tns:struct_RespostaDst" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="struct_RespostaDst">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Identificacao" type="tns:struct_Identificacao" />
+          <s:element minOccurs="1" maxOccurs="1" name="Controle" type="tns:struct_Controle" />
+          <s:element minOccurs="0" maxOccurs="1" name="Resposta">
+            <s:complexType>
+              <s:sequence>
+                <s:element ref="s:schema" />
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="struct_RespostaRst" type="tns:struct_RespostaRst" />
+      <s:element name="struct_RespostaDst" type="tns:struct_RespostaDst" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="InputSicVinAgRstSoapIn">
+    <wsdl:part name="parameters" element="tns:InputSicVinAgRst" />
+  </wsdl:message>
+  <wsdl:message name="InputSicVinAgRstSoapOut">
+    <wsdl:part name="parameters" element="tns:InputSicVinAgRstResponse" />
+  </wsdl:message>
+  <wsdl:message name="InputSicVinAgDstSoapIn">
+    <wsdl:part name="parameters" element="tns:InputSicVinAgDst" />
+  </wsdl:message>
+  <wsdl:message name="InputSicVinAgDstSoapOut">
+    <wsdl:part name="parameters" element="tns:InputSicVinAgDstResponse" />
+  </wsdl:message>
+  <wsdl:message name="InputSicVinAgRstHttpGetIn">
+    <wsdl:part name="pstrCliente" type="s:string" />
+    <wsdl:part name="pstrLogin" type="s:string" />
+    <wsdl:part name="pstrSenha" type="s:string" />
+    <wsdl:part name="pstrPlaca" type="s:string" />
+    <wsdl:part name="pstrChassi" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InputSicVinAgRstHttpGetOut">
+    <wsdl:part name="Body" element="tns:struct_RespostaRst" />
+  </wsdl:message>
+  <wsdl:message name="InputSicVinAgDstHttpGetIn">
+    <wsdl:part name="pstrCliente" type="s:string" />
+    <wsdl:part name="pstrLogin" type="s:string" />
+    <wsdl:part name="pstrSenha" type="s:string" />
+    <wsdl:part name="pstrPlaca" type="s:string" />
+    <wsdl:part name="pstrChassi" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InputSicVinAgDstHttpGetOut">
+    <wsdl:part name="Body" element="tns:struct_RespostaDst" />
+  </wsdl:message>
+  <wsdl:message name="InputSicVinAgRstHttpPostIn">
+    <wsdl:part name="pstrCliente" type="s:string" />
+    <wsdl:part name="pstrLogin" type="s:string" />
+    <wsdl:part name="pstrSenha" type="s:string" />
+    <wsdl:part name="pstrPlaca" type="s:string" />
+    <wsdl:part name="pstrChassi" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InputSicVinAgRstHttpPostOut">
+    <wsdl:part name="Body" element="tns:struct_RespostaRst" />
+  </wsdl:message>
+  <wsdl:message name="InputSicVinAgDstHttpPostIn">
+    <wsdl:part name="pstrCliente" type="s:string" />
+    <wsdl:part name="pstrLogin" type="s:string" />
+    <wsdl:part name="pstrSenha" type="s:string" />
+    <wsdl:part name="pstrPlaca" type="s:string" />
+    <wsdl:part name="pstrChassi" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InputSicVinAgDstHttpPostOut">
+    <wsdl:part name="Body" element="tns:struct_RespostaDst" />
+  </wsdl:message>
+  <wsdl:portType name="clsSicVinAgSoap">
+    <wsdl:operation name="InputSicVinAgRst">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retorna dados relativos ao veiculo conforme o padrao da correspondente montadora ou fabrica em formato XML.&lt;br&gt;Esta eh a melhor opcao para visualizar os dados manualmente.&lt;br&gt;1. Forneca os dados de consulta.&lt;br&gt;2. Quando a resposta surgir em formato xml, clique no centro da pagina com o segundo botao do mouse e escolha a opcao [exibir codigo-fonte] para visualizar os dados em formato mais amigavel.&lt;br&gt;</wsdl:documentation>
+      <wsdl:input message="tns:InputSicVinAgRstSoapIn" />
+      <wsdl:output message="tns:InputSicVinAgRstSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InputSicVinAgDst">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retorna dados relativos ao veiculo conforme o padrao da correspondente montadora ou fabrica em formato DataSet.</wsdl:documentation>
+      <wsdl:input message="tns:InputSicVinAgDstSoapIn" />
+      <wsdl:output message="tns:InputSicVinAgDstSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="clsSicVinAgHttpGet">
+    <wsdl:operation name="InputSicVinAgRst">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retorna dados relativos ao veiculo conforme o padrao da correspondente montadora ou fabrica em formato XML.&lt;br&gt;Esta eh a melhor opcao para visualizar os dados manualmente.&lt;br&gt;1. Forneca os dados de consulta.&lt;br&gt;2. Quando a resposta surgir em formato xml, clique no centro da pagina com o segundo botao do mouse e escolha a opcao [exibir codigo-fonte] para visualizar os dados em formato mais amigavel.&lt;br&gt;</wsdl:documentation>
+      <wsdl:input message="tns:InputSicVinAgRstHttpGetIn" />
+      <wsdl:output message="tns:InputSicVinAgRstHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InputSicVinAgDst">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retorna dados relativos ao veiculo conforme o padrao da correspondente montadora ou fabrica em formato DataSet.</wsdl:documentation>
+      <wsdl:input message="tns:InputSicVinAgDstHttpGetIn" />
+      <wsdl:output message="tns:InputSicVinAgDstHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="clsSicVinAgHttpPost">
+    <wsdl:operation name="InputSicVinAgRst">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retorna dados relativos ao veiculo conforme o padrao da correspondente montadora ou fabrica em formato XML.&lt;br&gt;Esta eh a melhor opcao para visualizar os dados manualmente.&lt;br&gt;1. Forneca os dados de consulta.&lt;br&gt;2. Quando a resposta surgir em formato xml, clique no centro da pagina com o segundo botao do mouse e escolha a opcao [exibir codigo-fonte] para visualizar os dados em formato mais amigavel.&lt;br&gt;</wsdl:documentation>
+      <wsdl:input message="tns:InputSicVinAgRstHttpPostIn" />
+      <wsdl:output message="tns:InputSicVinAgRstHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InputSicVinAgDst">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retorna dados relativos ao veiculo conforme o padrao da correspondente montadora ou fabrica em formato DataSet.</wsdl:documentation>
+      <wsdl:input message="tns:InputSicVinAgDstHttpPostIn" />
+      <wsdl:output message="tns:InputSicVinAgDstHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="clsSicVinAgSoap" type="tns:clsSicVinAgSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InputSicVinAgRst">
+      <soap:operation soapAction="https://webservices.nortix.com.br/webservices/InputSicVinAgRst" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InputSicVinAgDst">
+      <soap:operation soapAction="https://webservices.nortix.com.br/webservices/InputSicVinAgDst" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="clsSicVinAgSoap12" type="tns:clsSicVinAgSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InputSicVinAgRst">
+      <soap12:operation soapAction="https://webservices.nortix.com.br/webservices/InputSicVinAgRst" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InputSicVinAgDst">
+      <soap12:operation soapAction="https://webservices.nortix.com.br/webservices/InputSicVinAgDst" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="clsSicVinAgHttpGet" type="tns:clsSicVinAgHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="InputSicVinAgRst">
+      <http:operation location="/InputSicVinAgRst" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InputSicVinAgDst">
+      <http:operation location="/InputSicVinAgDst" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="clsSicVinAgHttpPost" type="tns:clsSicVinAgHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="InputSicVinAgRst">
+      <http:operation location="/InputSicVinAgRst" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InputSicVinAgDst">
+      <http:operation location="/InputSicVinAgDst" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="clsSicVinAg">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Provimento de servicos (via web services) sobre o Sistema Decodificador de Placas da Nortix Ltda.&lt;br&gt;O provimento deste servico nao eh publico, estando liberado apenas para nossos clientes mediante contrato.&lt;br&gt;Versao 1.19 de 22-Mai-2018</wsdl:documentation>
+    <wsdl:port name="clsSicVinAgSoap" binding="tns:clsSicVinAgSoap">
+      <soap:address location="http://webservices.nortix.com.br/webservices/clsSicVinAg.asmx" />
+    </wsdl:port>
+    <wsdl:port name="clsSicVinAgSoap12" binding="tns:clsSicVinAgSoap12">
+      <soap12:address location="http://webservices.nortix.com.br/webservices/clsSicVinAg.asmx" />
+    </wsdl:port>
+    <wsdl:port name="clsSicVinAgHttpGet" binding="tns:clsSicVinAgHttpGet">
+      <http:address location="http://webservices.nortix.com.br/webservices/clsSicVinAg.asmx" />
+    </wsdl:port>
+    <wsdl:port name="clsSicVinAgHttpPost" binding="tns:clsSicVinAgHttpPost">
+      <http:address location="http://webservices.nortix.com.br/webservices/clsSicVinAg.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

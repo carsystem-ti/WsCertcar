@@ -1,0 +1,977 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://principal.plataformaavalie.boavistaservicos.com.br/" targetNamespace="http://principal.plataformaavalie.boavistaservicos.com.br/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="FatosRetorno" type="tns:fatos" />
+  <xs:element name="ObjetosConhecidos" type="tns:objetosConhecidos" />
+  <xs:element name="analisar" type="tns:analisar" />
+  <xs:element name="analisarResponse" type="tns:analisarResponse" />
+  <xs:element name="executarAnalise" type="tns:executarAnalise" />
+  <xs:element name="executarAnaliseResponse" type="tns:executarAnaliseResponse" />
+  <xs:complexType name="analisar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ws" type="tns:DadosWS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DadosWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="tipo" type="xs:string" />
+      <xs:element name="hashAcesso" type="xs:string" />
+      <xs:element minOccurs="0" name="fatosEntrada" type="tns:fatos" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="fatos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dadosAnalise" type="tns:analise" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="parametrosAnalise" type="tns:parametros" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="mensagensAnalise" type="tns:mensagem" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="validacoesAnalise" type="tns:validacao" />
+      <xs:element minOccurs="0" name="relatorio" type="xs:string" />
+      <xs:element minOccurs="0" name="recomendacao" type="tns:recomendacao" />
+      <xs:element minOccurs="0" name="features" type="tns:features" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="enderecoInstalacaoTelefone" type="tns:enderecoInstalacaoTelefone" />
+      <xs:element minOccurs="0" name="administradorEmpresa" type="tns:administradorEmpresa" />
+      <xs:element minOccurs="0" name="alertaPJ" type="tns:alertaEmpresa" />
+      <xs:element minOccurs="0" name="cadastroEmpresa" type="tns:cadastroEmpresa" />
+      <xs:element minOccurs="0" name="comportamentalSegmento" type="tns:comportamentalSegmento" />
+      <xs:element minOccurs="0" name="consultasEmpresa" type="tns:consultasEmpresa" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="contatosEmpresaList" type="tns:contatosEmpresa" />
+      <xs:element minOccurs="0" name="localizacaoEmpresa" type="tns:localizacaoEmpresa" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="scoreCreditoEmpresa" type="tns:scoreCreditoEmpresa" />
+      <xs:element minOccurs="0" name="restritivoEmpresa" type="tns:restritivosEmpresa" />
+      <xs:element minOccurs="0" name="faturamentoPresumido" type="tns:faturamentoPresumido" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="historicoPagamentosEmpresa" type="tns:historicoPagamentosEmpresa" />
+      <xs:element minOccurs="0" name="historicoTributacaoMEI" type="tns:historicoTributacaoMei" />
+      <xs:element minOccurs="0" name="informacoesCadastraisMEI" type="tns:informacoesMEI" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="participacoesEmpresa" type="tns:participacoesEmpresa" />
+      <xs:element minOccurs="0" name="referenciasNegocios" type="tns:referenciaisNegocios" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="socioAcionistaEmpresa" type="tns:socioAcionistaEmpresa" />
+      <xs:element minOccurs="0" name="tempoRelacionamentoFornecedores" type="tns:tempoRelacionamentoFornecedores" />
+      <xs:element minOccurs="0" name="cadastralPF" type="tns:cadastroPessoa" />
+      <xs:element minOccurs="0" name="localizacaoPF" type="tns:localizacaoPessoa" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="contatosPF" type="tns:contatosPessoa" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="scoreCreditoPF" type="tns:scoreCreditoPessoa" />
+      <xs:element minOccurs="0" name="restritivosPF" type="tns:restritivosPessoa" />
+      <xs:element minOccurs="0" name="passagensPF" type="tns:consultasPessoa" />
+      <xs:element minOccurs="0" name="rendaPresumida" type="tns:rendaPresumida" />
+      <xs:element minOccurs="0" name="consultasAnterioresAssociadoMercado" type="tns:consultasAnterioresMercadoAssociado" />
+      <xs:element minOccurs="0" name="creditoPF" type="tns:creditoPessoa" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="participacaoEmpresaPF" type="tns:participacaoPessoa" />
+      <xs:element minOccurs="0" name="pessoaPorContato" type="tns:pessoaPorContato" />
+      <xs:element minOccurs="0" name="pessoaPorEndereco" type="tns:pessoaPorEndereco" />
+      <xs:element minOccurs="0" name="pessoaPorNome" type="tns:pessoaPorNome" />
+      <xs:element minOccurs="0" name="detalhesUltimosConsultantes" type="tns:pessoaUltimaConsulta" />
+      <xs:element minOccurs="0" name="detalhesUltimosConsultantesSegmento" type="tns:pessoaUltimoConsultanteSegmento" />
+      <xs:element minOccurs="0" name="localVotacao" type="tns:localVotacao" />
+      <xs:element minOccurs="0" name="operador" type="tns:operador" />
+      <xs:element minOccurs="0" name="reuso" type="tns:reuso" />
+      <xs:element minOccurs="0" name="situacaoEleitoral" type="tns:situacaoEleitoral" />
+      <xs:element minOccurs="0" name="telefone" type="tns:telefone" />
+      <xs:element minOccurs="0" name="resumoProcessamentoSimulacao" type="tns:resumoProcessamentoSimulacao" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="analise">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="documento" type="xs:string" />
+      <xs:element minOccurs="0" name="origem" type="xs:string" />
+      <xs:element minOccurs="0" name="remoteAddress" type="xs:string" />
+      <xs:element name="tipoDocumento" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="parametros">
+    <xs:sequence>
+      <xs:element name="ativo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="data" type="tns:date" />
+      <xs:element name="decimal" type="xs:double" />
+      <xs:element name="inteiro" type="xs:int" />
+      <xs:element minOccurs="0" name="texto" type="xs:string" />
+      <xs:element minOccurs="0" name="tipo" type="xs:string" />
+      <xs:element minOccurs="0" name="valor" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="date">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="mensagem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="descricao" type="xs:string" />
+      <xs:element minOccurs="0" name="mensagem" type="xs:string" />
+      <xs:element minOccurs="0" name="mensagemEn" type="xs:string" />
+      <xs:element minOccurs="0" name="tipo" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validacao">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="descricao" type="xs:string" />
+      <xs:element name="statusValidacao" type="xs:boolean" />
+      <xs:element name="suficienciaDadosValidacao" type="xs:int" />
+      <xs:element minOccurs="0" name="tipo" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="recomendacao">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="alcada" type="xs:string" />
+      <xs:element name="deriva" type="xs:boolean" />
+      <xs:element minOccurs="0" name="descricao" type="xs:string" />
+      <xs:element minOccurs="0" name="status" type="xs:string" />
+      <xs:element name="tipo" type="xs:int" />
+      <xs:element name="valor" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="features">
+    <xs:sequence>
+      <xs:element name="administradores" type="xs:boolean" />
+      <xs:element name="alertaDocumentos" type="xs:boolean" />
+      <xs:element name="cfc" type="xs:boolean" />
+      <xs:element name="cfo" type="xs:boolean" />
+      <xs:element name="cref" type="xs:boolean" />
+      <xs:element name="dataSus" type="xs:boolean" />
+      <xs:element name="doNotCall" type="xs:boolean" />
+      <xs:element name="enderecoAlternativo" type="xs:boolean" />
+      <xs:element name="enderecoInstalacaoTelefone" type="xs:boolean" />
+      <xs:element name="faturamentoPresumido" type="xs:boolean" />
+      <xs:element name="limiteCredito" type="xs:boolean" />
+      <xs:element name="listaCpfsNomeMae" type="xs:boolean" />
+      <xs:element name="monitoramento" type="xs:boolean" />
+      <xs:element name="oab" type="xs:boolean" />
+      <xs:element name="obito" type="xs:boolean" />
+      <xs:element name="participacaoSocietaria" type="xs:boolean" />
+      <xs:element name="pep" type="xs:boolean" />
+      <xs:element name="portalTransparencia" type="xs:boolean" />
+      <xs:element name="rendaPresumida" type="xs:boolean" />
+      <xs:element name="restricoes" type="xs:boolean" />
+      <xs:element name="scoreCobranca" type="xs:boolean" />
+      <xs:element name="scoreCredito" type="xs:boolean" />
+      <xs:element name="scoreFraude" type="xs:boolean" />
+      <xs:element name="scoreProspeccao" type="xs:boolean" />
+      <xs:element name="simulacao" type="xs:boolean" />
+      <xs:element minOccurs="0" name="sintegraAgricultor" type="xs:string" />
+      <xs:element name="telefonesAlternativos" type="xs:boolean" />
+      <xs:element minOccurs="0" name="tipoObjeto" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enderecoInstalacaoTelefone">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bairro" type="xs:string" />
+      <xs:element minOccurs="0" name="cep" type="xs:string" />
+      <xs:element minOccurs="0" name="cidade" type="xs:string" />
+      <xs:element minOccurs="0" name="complemento" type="xs:string" />
+      <xs:element minOccurs="0" name="dataAtualizacao" type="xs:string" />
+      <xs:element minOccurs="0" name="endereco" type="xs:string" />
+      <xs:element minOccurs="0" name="estado" type="xs:string" />
+      <xs:element minOccurs="0" name="logradouro" type="xs:string" />
+      <xs:element minOccurs="0" name="numero" type="xs:string" />
+      <xs:element minOccurs="0" name="origemEndereco" type="xs:string" />
+      <xs:element minOccurs="0" name="pais" type="xs:string" />
+      <xs:element minOccurs="0" name="telefoneConsultado" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoLogradouro" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoObjeto" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="administradorEmpresa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cargo" type="xs:string" />
+      <xs:element minOccurs="0" name="cpf" type="xs:string" />
+      <xs:element minOccurs="0" name="dataEntrada" type="xs:string" />
+      <xs:element minOccurs="0" name="dataSaida" type="xs:string" />
+      <xs:element minOccurs="0" name="estadoCivil" type="xs:string" />
+      <xs:element minOccurs="0" name="marcador" type="xs:string" />
+      <xs:element minOccurs="0" name="nacionalidade" type="xs:string" />
+      <xs:element minOccurs="0" name="nome" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoPessoa" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="alertaEmpresa">
+    <xs:sequence>
+      <xs:element name="alertaAtivo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="dataOcorrencia" type="xs:string" />
+      <xs:element minOccurs="0" name="descricao" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cadastroEmpresa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="atualizacaoJuntaComercial" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="capitalSocial" type="xs:double" />
+      <xs:element minOccurs="0" name="cnaeRamoAtividade" type="xs:string" />
+      <xs:element minOccurs="0" name="cnaeRamoAtividadeSecundario" type="xs:string" />
+      <xs:element minOccurs="0" name="cnpj" type="xs:string" />
+      <xs:element minOccurs="0" name="dataConsultaCNPJ" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dataConsultaSintegra" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dataEncerramento" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dataFundacao" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dataRazaoAnterior" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dataSituacaoCNPJ" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dataSituacaoSintegra" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="faixaFuncionarios" type="xs:string" />
+      <xs:element name="idadeEmpresa" type="xs:int" />
+      <xs:element minOccurs="0" name="matchCode" type="xs:string" />
+      <xs:element minOccurs="0" name="naturezaJuridica" type="xs:string" />
+      <xs:element minOccurs="0" name="nire" type="xs:string" />
+      <xs:element minOccurs="0" name="nomeFantasia" type="xs:string" />
+      <xs:element minOccurs="0" name="numeroInscricaoEstadual" type="xs:string" />
+      <xs:element name="quantidadeFiliais" type="xs:int" />
+      <xs:element minOccurs="0" name="ramoAtividade" type="xs:string" />
+      <xs:element minOccurs="0" name="ramoAtividadeSecundario" type="xs:string" />
+      <xs:element minOccurs="0" name="razaoAnterior" type="xs:string" />
+      <xs:element minOccurs="0" name="razaoSocial" type="xs:string" />
+      <xs:element minOccurs="0" name="situacaoCNPJ" type="xs:string" />
+      <xs:element minOccurs="0" name="situacaoSintegra" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoObjeto" type="xs:string" />
+      <xs:element minOccurs="0" name="ufInscricaoEstadual" type="xs:string" />
+      <xs:element minOccurs="0" name="ufNire" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="comportamentalSegmento">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="classificacaoRankingTitulosEmAbertoRankingAvencer" type="xs:string" />
+      <xs:element minOccurs="0" name="classificacaoRankingTitulosEmAbertoRankingEmaberto" type="xs:string" />
+      <xs:element minOccurs="0" name="classificacaoRankingTitulosEmAbertoRankingVencido" type="xs:string" />
+      <xs:element minOccurs="0" name="comprometimentoFuturoTitulosEmAbertoAvencer" type="xs:string" />
+      <xs:element minOccurs="0" name="comprometimentoFuturoTitulosEmAbertoEmAberto" type="xs:string" />
+      <xs:element minOccurs="0" name="dataAtualMaiorCompra" type="xs:string" />
+      <xs:element minOccurs="0" name="dataAtualMais1mesTitulosEmAbertoAvencer" type="xs:string" />
+      <xs:element minOccurs="0" name="dataAtualMais2mesesTitulosEmAbertoAvencer" type="xs:string" />
+      <xs:element minOccurs="0" name="dataAtualMais3mesesTitulosEmAbertoAvencer" type="xs:string" />
+      <xs:element minOccurs="0" name="dataAtualTitulosEmAbertoAvencer" type="xs:string" />
+      <xs:element minOccurs="0" name="dataAtualTitulosEmAbertoEmAberto" type="xs:string" />
+      <xs:element minOccurs="0" name="dataAtualTitulosEmAbertoVencido" type="xs:string" />
+      <xs:element minOccurs="0" name="dataAtualTitulosPagosAtraso" type="xs:string" />
+      <xs:element minOccurs="0" name="dataAtualTitulosPagosAvista" type="xs:string" />
+      <xs:element minOccurs="0" name="dataAtualTitulosPagosPontual" type="xs:string" />
+      <xs:element minOccurs="0" name="maiorCompraMesPassado" type="xs:string" />
+      <xs:element minOccurs="0" name="maiorCompraUltimos2Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="maiorCompraUltimos3Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="maiorCompraUltimos4Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="maiorCompraUltimos5Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="mediaCreditoConcedidoTitulosEmAbertoEmAberto" type="xs:string" />
+      <xs:element minOccurs="0" name="mediaDiasComportamentoTitulosAbertoAvencer" type="xs:string" />
+      <xs:element minOccurs="0" name="mediaDiasComportamentoTitulosAbertoVencido" type="xs:string" />
+      <xs:element minOccurs="0" name="mediaDiasComportamentoTitulosPagosAtraso" type="xs:string" />
+      <xs:element minOccurs="0" name="mediaTitulosComportamentoTitulosEmAbertoAvencer" type="xs:string" />
+      <xs:element minOccurs="0" name="mediaTitulosComportamentoTitulosEmAbertoEmAberto" type="xs:string" />
+      <xs:element minOccurs="0" name="mediaTitulosComportamentoTitulosEmAbertoVencido" type="xs:string" />
+      <xs:element minOccurs="0" name="mediaTitulosComportamentoTitulosPagosAtraso" type="xs:string" />
+      <xs:element minOccurs="0" name="mediaTitulosComportamentoTitulosPagosAvista" type="xs:string" />
+      <xs:element minOccurs="0" name="mediaTitulosComportamentoTitulosPagosPontual" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosEmAbertoAvencerMesPassado" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosEmAbertoAvencerUltimos2Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosEmAbertoAvencerUltimos3Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosEmAbertoAvencerUltimos4Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosEmAbertoAvencerUltimos5Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosEmAbertoEmAbertoMesPassado" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosEmAbertoEmAbertoUltimos2Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosEmAbertoEmAbertoUltimos3Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosEmAbertoEmAbertoUltimos4Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosEmAbertoEmAbertoUltimos5Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosEmAbertoVencidoMesPassado" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosEmAbertoVencidoUltimos2Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosEmAbertoVencidoUltimos3Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosEmAbertoVencidoUltimos4Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosEmAbertoVencidoUltimos5Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosPagosAVistaMesPassado" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosPagosAVistaUltimos2Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosPagosAVistaUltimos3Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosPagosAVistaUltimos4Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosPagosAVistaUltimos5Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosPagosAtrasoMesPassado" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosPagosAtrasoUltimos2Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosPagosAtrasoUltimos3Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosPagosAtrasoUltimos4Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosPagosAtrasoUltimos5Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosPagosPontualMesPassado" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosPagosPontualUltimos2Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosPagosPontualUltimos3Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosPagosPontualUltimos4Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="titulosPagosPontualUltimos5Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="totalComportamentoTitulosEmAbertoAvencer" type="xs:string" />
+      <xs:element minOccurs="0" name="totalComportamentoTitulosEmAbertoVencido" type="xs:string" />
+      <xs:element minOccurs="0" name="totalComportamentoTitulosPagosAtraso" type="xs:string" />
+      <xs:element minOccurs="0" name="totalComportamentoTitulosPagosAvista" type="xs:string" />
+      <xs:element minOccurs="0" name="totalComportamentoTitulosPagosPontual" type="xs:string" />
+      <xs:element minOccurs="0" name="totalTitulosComportamentoTitulosEmAbertoAvencer" type="xs:string" />
+      <xs:element minOccurs="0" name="totalTitulosComportamentoTitulosEmAbertoEmAberto" type="xs:string" />
+      <xs:element minOccurs="0" name="totalTitulosComportamentoTitulosEmAbertoVencido" type="xs:string" />
+      <xs:element minOccurs="0" name="totalTitulosComportamentoTitulosPagosAtraso" type="xs:string" />
+      <xs:element minOccurs="0" name="totalTitulosComportamentoTitulosPagosAvista" type="xs:string" />
+      <xs:element minOccurs="0" name="totalTitulosComportamentoTitulosPagosPontual" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="consultasEmpresa">
+    <xs:sequence>
+      <xs:element name="quantidade3Meses" type="xs:int" />
+      <xs:element name="quantidade6Meses" type="xs:int" />
+      <xs:element name="quantidade9Meses" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_1" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_10" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_11" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_12" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_2" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_3" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_4" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_5" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_6" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_7" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_8" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_9" type="xs:int" />
+      <xs:element name="quantidadeNoMesAtual" type="xs:int" />
+      <xs:element name="quantidadeTotal" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="contatosEmpresa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="origem" type="xs:string" />
+      <xs:element minOccurs="0" name="telefone" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoObjeto" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="localizacaoEmpresa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bairro" type="xs:string" />
+      <xs:element minOccurs="0" name="bairroMatriz" type="xs:string" />
+      <xs:element minOccurs="0" name="cep" type="xs:string" />
+      <xs:element minOccurs="0" name="cepMatriz" type="xs:string" />
+      <xs:element minOccurs="0" name="cidade" type="xs:string" />
+      <xs:element minOccurs="0" name="cidadeMatriz" type="xs:string" />
+      <xs:element minOccurs="0" name="endereco" type="xs:string" />
+      <xs:element minOccurs="0" name="enderecoMatriz" type="xs:string" />
+      <xs:element minOccurs="0" name="estado" type="xs:string" />
+      <xs:element minOccurs="0" name="estadoMatriz" type="xs:string" />
+      <xs:element name="latitude" type="xs:double" />
+      <xs:element name="longitude" type="xs:double" />
+      <xs:element minOccurs="0" name="matchCode" type="xs:string" />
+      <xs:element minOccurs="0" name="origemEndereco" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="scoreCreditoEmpresa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="descricao" type="xs:string" />
+      <xs:element minOccurs="0" name="descricaoEn" type="xs:string" />
+      <xs:element minOccurs="0" name="faixaRisco" type="xs:int" />
+      <xs:element minOccurs="0" name="modelo" type="xs:string" />
+      <xs:element name="probabilidade" type="xs:double" />
+      <xs:element name="valorScore" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="restritivosEmpresa">
+    <xs:sequence>
+      <xs:element name="participacaoFalencia" type="xs:boolean" />
+      <xs:element name="quantidadeAcoes12Meses" type="xs:int" />
+      <xs:element name="quantidadeAcoes24Meses" type="xs:int" />
+      <xs:element name="quantidadeAcoes36Meses" type="xs:int" />
+      <xs:element name="quantidadeAcoes3Meses" type="xs:int" />
+      <xs:element name="quantidadeAcoes48Meses" type="xs:int" />
+      <xs:element name="quantidadeAcoes60Meses" type="xs:int" />
+      <xs:element name="quantidadeAcoes6Meses" type="xs:int" />
+      <xs:element name="quantidadeAcoes9Meses" type="xs:int" />
+      <xs:element name="quantidadeAcoesAcima60Meses" type="xs:int" />
+      <xs:element name="quantidadeAcoesMesAtual" type="xs:int" />
+      <xs:element name="quantidadeCheques12Meses" type="xs:int" />
+      <xs:element name="quantidadeCheques24Meses" type="xs:int" />
+      <xs:element name="quantidadeCheques36Meses" type="xs:int" />
+      <xs:element name="quantidadeCheques3Meses" type="xs:int" />
+      <xs:element name="quantidadeCheques48Meses" type="xs:int" />
+      <xs:element name="quantidadeCheques60Meses" type="xs:int" />
+      <xs:element name="quantidadeCheques6Meses" type="xs:int" />
+      <xs:element name="quantidadeCheques9Meses" type="xs:int" />
+      <xs:element name="quantidadeChequesMesAtual" type="xs:int" />
+      <xs:element name="quantidadeCredores" type="xs:int" />
+      <xs:element name="quantidadeDebitos12Meses" type="xs:int" />
+      <xs:element name="quantidadeDebitos24Meses" type="xs:int" />
+      <xs:element name="quantidadeDebitos36Meses" type="xs:int" />
+      <xs:element name="quantidadeDebitos3Meses" type="xs:int" />
+      <xs:element name="quantidadeDebitos48Meses" type="xs:int" />
+      <xs:element name="quantidadeDebitos60Meses" type="xs:int" />
+      <xs:element name="quantidadeDebitos6Meses" type="xs:int" />
+      <xs:element name="quantidadeDebitos9Meses" type="xs:int" />
+      <xs:element name="quantidadeDebitosMesAtual" type="xs:int" />
+      <xs:element name="quantidadeProtestos12Meses" type="xs:int" />
+      <xs:element name="quantidadeProtestos24Meses" type="xs:int" />
+      <xs:element name="quantidadeProtestos36Meses" type="xs:int" />
+      <xs:element name="quantidadeProtestos3Meses" type="xs:int" />
+      <xs:element name="quantidadeProtestos48Meses" type="xs:int" />
+      <xs:element name="quantidadeProtestos60Meses" type="xs:int" />
+      <xs:element name="quantidadeProtestos6Meses" type="xs:int" />
+      <xs:element name="quantidadeProtestos9Meses" type="xs:int" />
+      <xs:element name="quantidadeProtestosMesAtual" type="xs:int" />
+      <xs:element name="quantidadeTotalDebitos" type="xs:int" />
+      <xs:element name="quantidadeTotalProtestos" type="xs:int" />
+      <xs:element name="valorDebitos12Meses" type="xs:double" />
+      <xs:element name="valorDebitos24Meses" type="xs:double" />
+      <xs:element name="valorDebitos36Meses" type="xs:double" />
+      <xs:element name="valorDebitos3Meses" type="xs:double" />
+      <xs:element name="valorDebitos48Meses" type="xs:double" />
+      <xs:element name="valorDebitos60Meses" type="xs:double" />
+      <xs:element name="valorDebitos6Meses" type="xs:double" />
+      <xs:element name="valorDebitos9Meses" type="xs:double" />
+      <xs:element name="valorDebitosMesAtual" type="xs:double" />
+      <xs:element name="valorProtestos12Meses" type="xs:double" />
+      <xs:element name="valorProtestos24Meses" type="xs:double" />
+      <xs:element name="valorProtestos36Meses" type="xs:double" />
+      <xs:element name="valorProtestos3Meses" type="xs:double" />
+      <xs:element name="valorProtestos48Meses" type="xs:double" />
+      <xs:element name="valorProtestos60Meses" type="xs:double" />
+      <xs:element name="valorProtestos6Meses" type="xs:double" />
+      <xs:element name="valorProtestos9Meses" type="xs:double" />
+      <xs:element name="valorProtestosMesAtual" type="xs:double" />
+      <xs:element name="valorTotalDebitos" type="xs:double" />
+      <xs:element name="valorTotalProtestos" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="faturamentoPresumido">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="faixa" type="xs:int" />
+      <xs:element minOccurs="0" name="faturamentoAnual" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="historicoPagamentosEmpresa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="atrasoMedio" type="xs:string" />
+      <xs:element minOccurs="0" name="diasAtraso1" type="xs:string" />
+      <xs:element minOccurs="0" name="diasAtraso2" type="xs:string" />
+      <xs:element minOccurs="0" name="diasAtraso3" type="xs:string" />
+      <xs:element minOccurs="0" name="diasAtraso4" type="xs:string" />
+      <xs:element minOccurs="0" name="fornecedores" type="xs:string" />
+      <xs:element minOccurs="0" name="pontual" type="xs:string" />
+      <xs:element minOccurs="0" name="titulos" type="xs:string" />
+      <xs:element minOccurs="0" name="total" type="xs:string" />
+      <xs:element minOccurs="0" name="valorTotal" type="xs:string" />
+      <xs:element minOccurs="0" name="aVista" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="historicoTributacaoMei">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dataFinalSimei" type="xs:string" />
+      <xs:element minOccurs="0" name="dataFinalSimples" type="xs:string" />
+      <xs:element minOccurs="0" name="dataInicialSimei" type="xs:string" />
+      <xs:element minOccurs="0" name="dataInicialSimples" type="xs:string" />
+      <xs:element minOccurs="0" name="detalhe" type="xs:string" />
+      <xs:element minOccurs="0" name="detalheSimei" type="xs:string" />
+      <xs:element minOccurs="0" name="statusSimei" type="xs:string" />
+      <xs:element minOccurs="0" name="statusSimples" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="informacoesMEI">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cnpj" type="xs:string" />
+      <xs:element minOccurs="0" name="dataConsulta" type="xs:string" />
+      <xs:element minOccurs="0" name="informacoesOptanteSimei" type="xs:string" />
+      <xs:element minOccurs="0" name="informacoesOptanteSimples" type="xs:string" />
+      <xs:element minOccurs="0" name="razaoSocial" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="participacoesEmpresa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cnpj" type="xs:string" />
+      <xs:element name="constaRestricao" type="xs:boolean" />
+      <xs:element minOccurs="0" name="dataEntrada" type="xs:string" />
+      <xs:element minOccurs="0" name="documentoParticipante" type="xs:string" />
+      <xs:element minOccurs="0" name="marcador" type="xs:string" />
+      <xs:element minOccurs="0" name="participacao" type="xs:string" />
+      <xs:element minOccurs="0" name="razaoSocial" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="referenciaisNegocios">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dataMaiorAcumulo" type="xs:string" />
+      <xs:element minOccurs="0" name="dataMaiorFatura" type="xs:string" />
+      <xs:element minOccurs="0" name="dataUltimaCompra" type="xs:string" />
+      <xs:element minOccurs="0" name="mediaMaiorAcumulo" type="xs:string" />
+      <xs:element minOccurs="0" name="mediaMaiorFatura" type="xs:string" />
+      <xs:element minOccurs="0" name="mediaUltimaCompra" type="xs:string" />
+      <xs:element minOccurs="0" name="valorMaiorAcumulo" type="xs:string" />
+      <xs:element minOccurs="0" name="valorMaiorFatura" type="xs:string" />
+      <xs:element minOccurs="0" name="valorUltimaCompra" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="socioAcionistaEmpresa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cnpj" type="xs:string" />
+      <xs:element minOccurs="0" name="cpf" type="xs:string" />
+      <xs:element minOccurs="0" name="dataEntrada" type="xs:string" />
+      <xs:element minOccurs="0" name="marcador" type="xs:string" />
+      <xs:element minOccurs="0" name="nome" type="xs:string" />
+      <xs:element minOccurs="0" name="partipacao" type="xs:string" />
+      <xs:element minOccurs="0" name="razaoSocial" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoPessoa" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tempoRelacionamentoFornecedores">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="quantidade13a24Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="quantidade25a60Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="quantidade61a120Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="quantidade7a12Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="quantidadeAcima120Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="quantidadeAte6Meses" type="xs:string" />
+      <xs:element minOccurs="0" name="quantidadeFontesConsultadas" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cadastroPessoa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bairroComercial" type="xs:string" />
+      <xs:element minOccurs="0" name="bairroResidencia" type="xs:string" />
+      <xs:element name="buscaFlagAlertaDocumento" type="xs:boolean" />
+      <xs:element name="buscaFlagObito" type="xs:boolean" />
+      <xs:element name="buscaFlagParticipacao" type="xs:boolean" />
+      <xs:element name="buscaFlagRenda" type="xs:boolean" />
+      <xs:element name="buscaFlagScore" type="xs:boolean" />
+      <xs:element minOccurs="0" name="cargo" type="xs:string" />
+      <xs:element minOccurs="0" name="cepComercial" type="xs:string" />
+      <xs:element minOccurs="0" name="cepResidencia" type="xs:string" />
+      <xs:element minOccurs="0" name="cidadeComercial" type="xs:string" />
+      <xs:element minOccurs="0" name="cidadeOrigem" type="xs:string" />
+      <xs:element minOccurs="0" name="cidadeResidencia" type="xs:string" />
+      <xs:element minOccurs="0" name="classeSocial" type="xs:string" />
+      <xs:element minOccurs="0" name="cnpjEmpresaRelacionado" type="xs:string" />
+      <xs:element minOccurs="0" name="codigoSexo" type="xs:string" />
+      <xs:element name="constaObito" type="xs:boolean" />
+      <xs:element minOccurs="0" name="cpf" type="xs:string" />
+      <xs:element minOccurs="0" name="cpfConjuge" type="xs:string" />
+      <xs:element minOccurs="0" name="cpfMae" type="xs:string" />
+      <xs:element minOccurs="0" name="cpfPai" type="xs:string" />
+      <xs:element minOccurs="0" name="dataAtualizacaoResidencia" type="xs:string" />
+      <xs:element minOccurs="0" name="dataCadastro" type="xs:string" />
+      <xs:element minOccurs="0" name="dataConsultaRF" type="xs:string" />
+      <xs:element minOccurs="0" name="dataNascimento" type="xs:string" />
+      <xs:element minOccurs="0" name="dddCelular" type="xs:string" />
+      <xs:element minOccurs="0" name="dddComercial" type="xs:string" />
+      <xs:element minOccurs="0" name="dddInformado" type="xs:string" />
+      <xs:element minOccurs="0" name="emailInformado" type="xs:string" />
+      <xs:element minOccurs="0" name="estadoCivil" type="xs:string" />
+      <xs:element minOccurs="0" name="estadoComercial" type="xs:string" />
+      <xs:element minOccurs="0" name="estadoOrigem" type="xs:string" />
+      <xs:element minOccurs="0" name="estadoResidencia" type="xs:string" />
+      <xs:element minOccurs="0" name="grauInstrucao" type="xs:string" />
+      <xs:element name="idade" type="xs:int" />
+      <xs:element minOccurs="0" name="logradouroComercial" type="xs:string" />
+      <xs:element minOccurs="0" name="logradouroResidencia" type="xs:string" />
+      <xs:element minOccurs="0" name="matchcode" type="xs:string" />
+      <xs:element minOccurs="0" name="nacionalidade" type="xs:string" />
+      <xs:element minOccurs="0" name="nome" type="xs:string" />
+      <xs:element minOccurs="0" name="nomeConjuge" type="xs:string" />
+      <xs:element minOccurs="0" name="nomeMae" type="xs:string" />
+      <xs:element minOccurs="0" name="nomePai" type="xs:string" />
+      <xs:element minOccurs="0" name="numeroComercial" type="xs:string" />
+      <xs:element minOccurs="0" name="numeroDependentes" type="xs:string" />
+      <xs:element minOccurs="0" name="numeroResidencia" type="xs:string" />
+      <xs:element minOccurs="0" name="orgao" type="xs:string" />
+      <xs:element minOccurs="0" name="origem" type="xs:string" />
+      <xs:element minOccurs="0" name="origemCPF" type="xs:string" />
+      <xs:element minOccurs="0" name="origemCadastro" type="xs:string" />
+      <xs:element minOccurs="0" name="paisOrigem" type="xs:string" />
+      <xs:element minOccurs="0" name="paisResidencia" type="xs:string" />
+      <xs:element minOccurs="0" name="pepRelacionado" type="xs:string" />
+      <xs:element name="politicamenteExposta" type="xs:boolean" />
+      <xs:element name="possuiBairroResidencia" type="xs:boolean" />
+      <xs:element name="possuiCPFMae" type="xs:boolean" />
+      <xs:element name="possuiCepResidencia" type="xs:boolean" />
+      <xs:element name="possuiCidadeResidencia" type="xs:boolean" />
+      <xs:element name="possuiClasseSocial" type="xs:boolean" />
+      <xs:element name="possuiDataAtualizacaoResidencia" type="xs:boolean" />
+      <xs:element name="possuiDataCadastro" type="xs:boolean" />
+      <xs:element name="possuiDataConsultaRF" type="xs:boolean" />
+      <xs:element name="possuiDataNascimento" type="xs:boolean" />
+      <xs:element name="possuiDocumentoRoubado" type="xs:boolean" />
+      <xs:element name="possuiEmail" type="xs:boolean" />
+      <xs:element name="possuiEstadoCivil" type="xs:boolean" />
+      <xs:element name="possuiEstadoResidencia" type="xs:boolean" />
+      <xs:element name="possuiLogradouroResidencia" type="xs:boolean" />
+      <xs:element name="possuiNacionalidade" type="xs:boolean" />
+      <xs:element name="possuiNome" type="xs:boolean" />
+      <xs:element name="possuiNomeConjuge" type="xs:boolean" />
+      <xs:element name="possuiNomeMae" type="xs:boolean" />
+      <xs:element name="possuiNomePai" type="xs:boolean" />
+      <xs:element name="possuiNumeroDependentes" type="xs:boolean" />
+      <xs:element name="possuiNumeroResidencia" type="xs:boolean" />
+      <xs:element name="possuiPaisOrigem" type="xs:boolean" />
+      <xs:element name="possuiPaisResidencia" type="xs:boolean" />
+      <xs:element name="possuiProfissao" type="xs:boolean" />
+      <xs:element name="possuiRG" type="xs:boolean" />
+      <xs:element name="possuiSexo" type="xs:boolean" />
+      <xs:element name="possuiSituacao" type="xs:boolean" />
+      <xs:element name="possuiTipoLogradouro" type="xs:boolean" />
+      <xs:element name="possuiTituloEleitor" type="xs:boolean" />
+      <xs:element minOccurs="0" name="primeiroNome" type="xs:string" />
+      <xs:element minOccurs="0" name="primeiroNomeMae" type="xs:string" />
+      <xs:element minOccurs="0" name="profissao" type="xs:string" />
+      <xs:element minOccurs="0" name="protocoloRF" type="xs:string" />
+      <xs:element minOccurs="0" name="razaoSocialComercial" type="xs:string" />
+      <xs:element minOccurs="0" name="relacionamento" type="xs:string" />
+      <xs:element minOccurs="0" name="rg" type="xs:string" />
+      <xs:element minOccurs="0" name="sexo" type="xs:string" />
+      <xs:element minOccurs="0" name="situacao" type="xs:string" />
+      <xs:element minOccurs="0" name="telefoneCelular" type="xs:string" />
+      <xs:element minOccurs="0" name="telefoneComercial" type="xs:string" />
+      <xs:element minOccurs="0" name="telefoneInformado" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoLogradouro" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoObjeto" type="xs:string" />
+      <xs:element minOccurs="0" name="tituloEleitor" type="xs:string" />
+      <xs:element minOccurs="0" name="ultimoNome" type="xs:string" />
+      <xs:element minOccurs="0" name="ultimoNomeMae" type="xs:string" />
+      <xs:element minOccurs="0" name="validade" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="localizacaoPessoa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bairro" type="xs:string" />
+      <xs:element minOccurs="0" name="cep" type="xs:string" />
+      <xs:element minOccurs="0" name="cidade" type="xs:string" />
+      <xs:element minOccurs="0" name="complemento" type="xs:string" />
+      <xs:element minOccurs="0" name="dataAtualizacao" type="xs:string" />
+      <xs:element minOccurs="0" name="endereco" type="xs:string" />
+      <xs:element minOccurs="0" name="estado" type="xs:string" />
+      <xs:element name="latitude" type="xs:double" />
+      <xs:element minOccurs="0" name="logradouro" type="xs:string" />
+      <xs:element name="longitude" type="xs:double" />
+      <xs:element name="nota" type="xs:int" />
+      <xs:element minOccurs="0" name="numero" type="xs:string" />
+      <xs:element minOccurs="0" name="origemEndereco" type="xs:string" />
+      <xs:element minOccurs="0" name="pais" type="xs:string" />
+      <xs:element name="possuiBairro" type="xs:boolean" />
+      <xs:element name="possuiCep" type="xs:boolean" />
+      <xs:element name="possuiCidade" type="xs:boolean" />
+      <xs:element name="possuiComplemento" type="xs:boolean" />
+      <xs:element name="possuiDataAtualizacao" type="xs:boolean" />
+      <xs:element name="possuiEndereco" type="xs:boolean" />
+      <xs:element name="possuiEstado" type="xs:boolean" />
+      <xs:element name="possuiLogradouro" type="xs:boolean" />
+      <xs:element name="possuiNumero" type="xs:boolean" />
+      <xs:element name="possuiOrigemEndereco" type="xs:boolean" />
+      <xs:element name="possuiPais" type="xs:boolean" />
+      <xs:element name="possuiTipoLogradouro" type="xs:boolean" />
+      <xs:element minOccurs="0" name="tipoLogradouro" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoObjeto" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="contatosPessoa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contato" type="xs:string" />
+      <xs:element minOccurs="0" name="data" type="xs:string" />
+      <xs:element minOccurs="0" name="descricaoClasseContato" type="xs:string" />
+      <xs:element minOccurs="0" name="descricaoContato" type="xs:string" />
+      <xs:element minOccurs="0" name="dtUltimoErro" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dtUltimoSucesso" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="matchCode" type="xs:string" />
+      <xs:element name="nota" type="xs:int" />
+      <xs:element minOccurs="0" name="origemContato" type="xs:string" />
+      <xs:element name="possuiContato" type="xs:boolean" />
+      <xs:element name="possuiDataContato" type="xs:boolean" />
+      <xs:element name="possuiDescricaoClasseContato" type="xs:boolean" />
+      <xs:element name="possuiDescricaoContato" type="xs:boolean" />
+      <xs:element name="possuiOrigemContato" type="xs:boolean" />
+      <xs:element name="possuiTipoContato" type="xs:boolean" />
+      <xs:element name="qtdErro" type="xs:int" />
+      <xs:element name="qtdSucesso" type="xs:int" />
+      <xs:element minOccurs="0" name="tipoContato" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoObjeto" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="scoreCreditoPessoa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="faixaRisco" type="xs:int" />
+      <xs:element minOccurs="0" name="modelo" type="xs:string" />
+      <xs:element name="probabilidade" type="xs:double" />
+      <xs:element name="valorScore" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="restritivosPessoa">
+    <xs:sequence>
+      <xs:element name="participacaoFalencia" type="xs:boolean" />
+      <xs:element name="quantidadeAcoes12Meses" type="xs:int" />
+      <xs:element name="quantidadeAcoes24Meses" type="xs:int" />
+      <xs:element name="quantidadeAcoes36Meses" type="xs:int" />
+      <xs:element name="quantidadeAcoes3Meses" type="xs:int" />
+      <xs:element name="quantidadeAcoes48Meses" type="xs:int" />
+      <xs:element name="quantidadeAcoes60Meses" type="xs:int" />
+      <xs:element name="quantidadeAcoes6Meses" type="xs:int" />
+      <xs:element name="quantidadeAcoes9Meses" type="xs:int" />
+      <xs:element name="quantidadeAcoesMesAtual" type="xs:int" />
+      <xs:element name="quantidadeCheques12Meses" type="xs:int" />
+      <xs:element name="quantidadeCheques24Meses" type="xs:int" />
+      <xs:element name="quantidadeCheques36Meses" type="xs:int" />
+      <xs:element name="quantidadeCheques3Meses" type="xs:int" />
+      <xs:element name="quantidadeCheques48Meses" type="xs:int" />
+      <xs:element name="quantidadeCheques60Meses" type="xs:int" />
+      <xs:element name="quantidadeCheques6Meses" type="xs:int" />
+      <xs:element name="quantidadeCheques9Meses" type="xs:int" />
+      <xs:element name="quantidadeChequesMesAtual" type="xs:int" />
+      <xs:element name="quantidadeDebitos12Meses" type="xs:int" />
+      <xs:element name="quantidadeDebitos24Meses" type="xs:int" />
+      <xs:element name="quantidadeDebitos36Meses" type="xs:int" />
+      <xs:element name="quantidadeDebitos3Meses" type="xs:int" />
+      <xs:element name="quantidadeDebitos48Meses" type="xs:int" />
+      <xs:element name="quantidadeDebitos60Meses" type="xs:int" />
+      <xs:element name="quantidadeDebitos6Meses" type="xs:int" />
+      <xs:element name="quantidadeDebitos9Meses" type="xs:int" />
+      <xs:element name="quantidadeDebitosMesAtual" type="xs:int" />
+      <xs:element name="quantidadeProtestos12Meses" type="xs:int" />
+      <xs:element name="quantidadeProtestos24Meses" type="xs:int" />
+      <xs:element name="quantidadeProtestos36Meses" type="xs:int" />
+      <xs:element name="quantidadeProtestos3Meses" type="xs:int" />
+      <xs:element name="quantidadeProtestos48Meses" type="xs:int" />
+      <xs:element name="quantidadeProtestos60Meses" type="xs:int" />
+      <xs:element name="quantidadeProtestos6Meses" type="xs:int" />
+      <xs:element name="quantidadeProtestos9Meses" type="xs:int" />
+      <xs:element name="quantidadeProtestosMesAtual" type="xs:int" />
+      <xs:element minOccurs="0" name="rendaPresumida" type="xs:string" />
+      <xs:element name="valorAcoes12Meses" type="xs:double" />
+      <xs:element name="valorAcoes24Meses" type="xs:double" />
+      <xs:element name="valorAcoes36Meses" type="xs:double" />
+      <xs:element name="valorAcoes3Meses" type="xs:double" />
+      <xs:element name="valorAcoes48Meses" type="xs:double" />
+      <xs:element name="valorAcoes60Meses" type="xs:double" />
+      <xs:element name="valorAcoes6Meses" type="xs:double" />
+      <xs:element name="valorAcoes9Meses" type="xs:double" />
+      <xs:element name="valorAcoesMesAtual" type="xs:double" />
+      <xs:element name="valorDebitos12Meses" type="xs:double" />
+      <xs:element name="valorDebitos24Meses" type="xs:double" />
+      <xs:element name="valorDebitos36Meses" type="xs:double" />
+      <xs:element name="valorDebitos3Meses" type="xs:double" />
+      <xs:element name="valorDebitos48Meses" type="xs:double" />
+      <xs:element name="valorDebitos60Meses" type="xs:double" />
+      <xs:element name="valorDebitos6Meses" type="xs:double" />
+      <xs:element name="valorDebitos9Meses" type="xs:double" />
+      <xs:element name="valorDebitosMesAtual" type="xs:double" />
+      <xs:element name="valorProtestos12Meses" type="xs:double" />
+      <xs:element name="valorProtestos24Meses" type="xs:double" />
+      <xs:element name="valorProtestos36Meses" type="xs:double" />
+      <xs:element name="valorProtestos3Meses" type="xs:double" />
+      <xs:element name="valorProtestos48Meses" type="xs:double" />
+      <xs:element name="valorProtestos60Meses" type="xs:double" />
+      <xs:element name="valorProtestos6Meses" type="xs:double" />
+      <xs:element name="valorProtestos9Meses" type="xs:double" />
+      <xs:element name="valorProtestosMesAtual" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="consultasPessoa">
+    <xs:sequence>
+      <xs:element name="mediaConsultasUltimos60Dias" type="xs:double" />
+      <xs:element name="quantidade3Meses" type="xs:int" />
+      <xs:element name="quantidade6Meses" type="xs:int" />
+      <xs:element name="quantidade9Meses" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_1" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_10" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_11" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_12" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_2" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_3" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_4" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_5" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_6" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_7" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_8" type="xs:int" />
+      <xs:element name="quantidadeMesAnterior_9" type="xs:int" />
+      <xs:element name="quantidadeNoMesAtual" type="xs:int" />
+      <xs:element name="quantidadeTotal" type="xs:int" />
+      <xs:element name="quantidadeTotalConsultasCheques" type="xs:int" />
+      <xs:element name="quantidadeTotalConsultasCredito" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="rendaPresumida">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="faixa" type="xs:int" />
+      <xs:element minOccurs="0" name="mensagem" type="xs:string" />
+      <xs:element minOccurs="0" name="rendaPresumida" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="consultasAnterioresMercadoAssociado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dataConsulta" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="informante" type="xs:string" />
+      <xs:element minOccurs="0" name="moeda" type="xs:string" />
+      <xs:element minOccurs="0" name="ramoAtividade" type="xs:string" />
+      <xs:element minOccurs="0" name="tipo" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoOcorrencia" type="xs:string" />
+      <xs:element minOccurs="0" name="valor" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="creditoPessoa">
+    <xs:sequence>
+      <xs:element name="historicoPendencia" type="xs:boolean" />
+      <xs:element name="limiteAdicional" type="xs:boolean" />
+      <xs:element name="novoCliente" type="xs:boolean" />
+      <xs:element name="percentualLimiteAdicional" type="xs:int" />
+      <xs:element minOccurs="0" name="produto" type="xs:string" />
+      <xs:element name="ratingInterno" type="xs:boolean" />
+      <xs:element minOccurs="0" name="status" type="xs:string" />
+      <xs:element name="valorAdicional" type="xs:double" />
+      <xs:element name="valorCompromissado" type="xs:double" />
+      <xs:element name="valorLimite" type="xs:double" />
+      <xs:element name="valorSolicitado" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="participacaoPessoa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cargo" type="xs:string" />
+      <xs:element minOccurs="0" name="cnpj" type="xs:long" />
+      <xs:element minOccurs="0" name="dataEntrada" type="xs:string" />
+      <xs:element name="porcentagemParticipacao" type="xs:double" />
+      <xs:element minOccurs="0" name="razaoSocial" type="xs:string" />
+      <xs:element name="restricao" type="xs:boolean" />
+      <xs:element minOccurs="0" name="tipoSocio" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pessoaPorContato">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cpf" type="xs:string" />
+      <xs:element minOccurs="0" name="telefone" type="xs:string" />
+      <xs:element minOccurs="0" name="tipo" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pessoaPorEndereco">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bairro" type="xs:string" />
+      <xs:element minOccurs="0" name="cep" type="xs:string" />
+      <xs:element minOccurs="0" name="cidade" type="xs:string" />
+      <xs:element minOccurs="0" name="complemento" type="xs:string" />
+      <xs:element minOccurs="0" name="cpf" type="xs:string" />
+      <xs:element minOccurs="0" name="estado" type="xs:string" />
+      <xs:element minOccurs="0" name="logradouro" type="xs:string" />
+      <xs:element minOccurs="0" name="numero" type="xs:string" />
+      <xs:element minOccurs="0" name="tipo" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pessoaPorNome">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cpf" type="xs:string" />
+      <xs:element minOccurs="0" name="dataNascimento" type="xs:string" />
+      <xs:element minOccurs="0" name="nome" type="xs:string" />
+      <xs:element minOccurs="0" name="nomeMae" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pessoaUltimaConsulta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dataConsulta" type="xs:string" />
+      <xs:element minOccurs="0" name="nomeEmpresa" type="xs:string" />
+      <xs:element minOccurs="0" name="quantidade" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pessoaUltimoConsultanteSegmento">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dataConsulta" type="xs:string" />
+      <xs:element minOccurs="0" name="quantidade" type="xs:int" />
+      <xs:element minOccurs="0" name="razaoSocial" type="xs:string" />
+      <xs:element minOccurs="0" name="segmento" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="localVotacao">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bairro" type="xs:string" />
+      <xs:element minOccurs="0" name="codRetorno" type="xs:string" />
+      <xs:element minOccurs="0" name="endereco" type="xs:string" />
+      <xs:element minOccurs="0" name="estado" type="xs:string" />
+      <xs:element minOccurs="0" name="localVotacao" type="xs:string" />
+      <xs:element minOccurs="0" name="municipio" type="xs:string" />
+      <xs:element minOccurs="0" name="nomeEleitor" type="xs:string" />
+      <xs:element minOccurs="0" name="secaoEleitoral" type="xs:string" />
+      <xs:element minOccurs="0" name="tituloEleitor" type="xs:string" />
+      <xs:element minOccurs="0" name="zonaEleitoral" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="operador">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="alcada" type="xs:string" />
+      <xs:element name="alcadaValor" type="xs:double" />
+      <xs:element name="ativo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="codigo" type="xs:string" />
+      <xs:element minOccurs="0" name="descricaoPerfil" type="xs:string" />
+      <xs:element minOccurs="0" name="email" type="xs:string" />
+      <xs:element minOccurs="0" name="nome" type="xs:string" />
+      <xs:element minOccurs="0" name="papel" type="xs:string" />
+      <xs:element minOccurs="0" name="perfil" type="xs:string" />
+      <xs:element minOccurs="0" name="sobrenome" type="xs:string" />
+      <xs:element minOccurs="0" name="telefone" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="reuso">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="agencia" type="xs:string" />
+      <xs:element minOccurs="0" name="banco" type="xs:string" />
+      <xs:element minOccurs="0" name="beanNegocio" type="xs:string" />
+      <xs:element minOccurs="0" name="cmc7" type="xs:string" />
+      <xs:element minOccurs="0" name="contaCorrente" type="xs:string" />
+      <xs:element minOccurs="0" name="diasUtilizacao" type="xs:int" />
+      <xs:element minOccurs="0" name="digitoCheque" type="xs:string" />
+      <xs:element minOccurs="0" name="documento" type="xs:string" />
+      <xs:element name="idEmpresa" type="xs:int" />
+      <xs:element name="idUsuario" type="xs:int" />
+      <xs:element minOccurs="0" name="modulo" type="xs:string" />
+      <xs:element minOccurs="0" name="numeroCheque" type="xs:string" />
+      <xs:element minOccurs="0" name="ordenacao" type="xs:string" />
+      <xs:element name="utilizouReuso" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="situacaoEleitoral">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codRetorno" type="xs:string" />
+      <xs:element minOccurs="0" name="dataConsulta" type="xs:string" />
+      <xs:element minOccurs="0" name="dataNascimentoEleitor" type="xs:string" />
+      <xs:element minOccurs="0" name="nomeEleitor" type="xs:string" />
+      <xs:element minOccurs="0" name="situacaoEleitoral" type="xs:string" />
+      <xs:element minOccurs="0" name="tituloEleitor" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="telefone">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ddd" type="xs:string" />
+      <xs:element minOccurs="0" name="origem" type="xs:string" />
+      <xs:element minOccurs="0" name="telefone" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resumoProcessamentoSimulacao">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="porcentagemDerivacao" type="xs:double" />
+      <xs:element minOccurs="0" name="porcentagemNaoRecomendados" type="xs:double" />
+      <xs:element minOccurs="0" name="porcentagemRecomendados" type="xs:double" />
+      <xs:element minOccurs="0" name="porcentagemdeCnpj" type="xs:double" />
+      <xs:element minOccurs="0" name="porcentagemdeCpf" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="principaisMensagensDerivacao" nillable="true" type="tns:mensagem" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="principaisMensagensNaoRecomendacao" nillable="true" type="tns:mensagem" />
+      <xs:element minOccurs="0" name="quantidadeDerivacao" type="xs:int" />
+      <xs:element minOccurs="0" name="quantidadeDocumentos" type="xs:int" />
+      <xs:element minOccurs="0" name="quantidadeDocumentosCnpj" type="xs:int" />
+      <xs:element minOccurs="0" name="quantidadeDocumentosCpf" type="xs:int" />
+      <xs:element minOccurs="0" name="quantidadeNaoRecomendados" type="xs:int" />
+      <xs:element minOccurs="0" name="quantidadeRecomendados" type="xs:int" />
+      <xs:element minOccurs="0" name="tempoMedioAnalise" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="analisarResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fatosRetorno" type="tns:fatos" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="executarAnalise">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="wsparams" type="tns:ParametrosWS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParametrosWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="tipo" type="xs:string" />
+      <xs:element name="hashAcesso" type="xs:string" />
+      <xs:element minOccurs="0" name="objetosConhecidos" type="tns:objetosConhecidos" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="objetosConhecidos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="analise" type="tns:analise" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="parametros" type="tns:parametros" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="mensagens" type="tns:mensagem" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="validacoes" type="tns:validacao" />
+      <xs:element minOccurs="0" name="relatorioUtilizado" type="xs:string" />
+      <xs:element minOccurs="0" name="recomendacao" type="tns:recomendacao" />
+      <xs:element minOccurs="0" name="dadosCadastraisPessoaFisica" type="tns:cadastroPessoa" />
+      <xs:element minOccurs="0" name="localizacaoPessoaFisica" type="tns:localizacaoPessoa" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="contatosPessoaFisica" type="tns:contatosPessoa" />
+      <xs:element minOccurs="0" name="scoreCreditoPessoaFisica" type="tns:scoreCreditoPessoa" />
+      <xs:element minOccurs="0" name="dadosRestritivosPessoaFisica" type="tns:restritivosPessoa" />
+      <xs:element minOccurs="0" name="passagens" type="tns:consultasPessoa" />
+      <xs:element minOccurs="0" name="rendaPresumida" type="tns:rendaPresumida" />
+      <xs:element minOccurs="0" name="features" type="tns:features" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="executarAnaliseResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="objetosConhecidos" type="tns:objetosConhecidos" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

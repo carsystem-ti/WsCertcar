@@ -45,10 +45,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CarSystem.Banco, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\CarSystem.Banco.dll</HintPath>
+    </Reference>
+    <Reference Include="CarSystem.BancoDados, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\CarSystem.BancoDados.dll</HintPath>
+    </Reference>
+    <Reference Include="CarSystem.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\CarSystem.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Carsystem.Tipos, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Carsystem.Tipos.dll</HintPath>
+    </Reference>
+    <Reference Include="CarSystem.Utilidades, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\CarSystem.Utilidades.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -155,18 +176,54 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Connected Services\ServicoNortix\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ValidaPlacaNortix\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\wsBoaVista\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="dao\daoCliente.cs" />
+    <Compile Include="dao\daoPlaca.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Nortix.cs" />
+    <Compile Include="Models\v_Nortix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <None Include="Connected Services\ServicoNortix\clsLeilao2.disco" />
+    <None Include="Connected Services\ServicoNortix\configuration91.svcinfo" />
+    <None Include="Connected Services\ServicoNortix\configuration.svcinfo" />
+    <None Include="Connected Services\ServicoNortix\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\ValidaPlacaNortix\clsSicVinAg.disco" />
+    <None Include="Connected Services\ValidaPlacaNortix\configuration91.svcinfo" />
+    <None Include="Connected Services\ValidaPlacaNortix\configuration.svcinfo" />
+    <None Include="Connected Services\ValidaPlacaNortix\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\wsBoaVista\configuration91.svcinfo" />
+    <None Include="Connected Services\wsBoaVista\configuration.svcinfo" />
+    <None Include="Connected Services\wsBoaVista\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -195,6 +252,42 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <None Include="Connected Services\ServicoNortix\clsLeilao2.wsdl" />
+    <Content Include="Connected Services\ServicoNortix\WsCertcar.ServicoNortix.struct_RespostaBol.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicoNortix\WsCertcar.ServicoNortix.struct_RespostaDst.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicoNortix\WsCertcar.ServicoNortix.struct_RespostaRst.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicoNortix\WsCertcar.ServicoNortix.struct_RespostaRstFoto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\ValidaPlacaNortix\clsSicVinAg.wsdl" />
+    <Content Include="Connected Services\ValidaPlacaNortix\WsCertcar.ValidaPlacaNortix.struct_RespostaDst.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ValidaPlacaNortix\WsCertcar.ValidaPlacaNortix.struct_RespostaRst.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\wsBoaVista\Engine.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsBoaVista\ServidorService.wsdl" />
+    <Content Include="Connected Services\wsBoaVista\WsCertcar.wsBoaVista.analisarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\wsBoaVista\WsCertcar.wsBoaVista.executarAnaliseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\wsBoaVista\WsCertcar.wsBoaVista.fatos.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\wsBoaVista\WsCertcar.wsBoaVista.objetosConhecidos.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -219,6 +312,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="NewFolder1\" />
     <Folder Include="Views\Cliente\" />
   </ItemGroup>
   <ItemGroup>
@@ -249,6 +343,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServicoNortix\" />
+    <WCFMetadataStorage Include="Connected Services\ValidaPlacaNortix\" />
+    <WCFMetadataStorage Include="Connected Services\wsBoaVista\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
